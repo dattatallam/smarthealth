@@ -15,7 +15,7 @@ def _num(label, key, **kw):
 def render():
     html('<div class="sh-label">Step 1</div><div class="sh-h1">New assessment</div>'
          '<p class="sh-muted">Enter your latest health values. BMI is calculated automatically from height and weight.</p>')
-    with st.form("assessment_form"):
+    with st.form("assessment_form", enter_to_submit=False):
         html('<div class="sh-label">Basics</div>')
         a, b = st.columns(2)
         age = a.number_input("Age (years)", value=None, placeholder="e.g. 35", key="f_age")

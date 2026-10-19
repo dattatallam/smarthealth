@@ -16,13 +16,15 @@ PUBLIC = {"landing", "login", "signup"}
 if ss.user is None and ss.page not in PUBLIC:
     ss.page = "landing"
 if ss.user is not None and ss.page in PUBLIC:
-    ss.page = "dashboard"
+    ss.page = "assessment"
+if ss.user is not None and ss.page == "dashboard":
+    ss.page = "assessment"
 
 inject_css(hide_sidebar=ss.user is None)
 
-from frontend.views import landing, auth, dashboard, assessment, results, history, about  # noqa: E402
+from frontend.views import landing, auth, assessment, results, history, about  # noqa: E402
 
-NAV = [("dashboard", "▦  Dashboard"), ("assessment", "∿  New assessment"), ("results", "◎  Results"),
+NAV = [("assessment", "∿  New assessment"), ("results", "◎  Results"),
        ("history", "◷  History & trends"), ("about", "ⓘ  About project")]
 
 if ss.user:
@@ -40,7 +42,7 @@ if ss.user:
 
 ROUTES = {
     "landing": landing.render, "login": lambda: auth.render("login"), "signup": lambda: auth.render("signup"),
-    "dashboard": dashboard.render, "assessment": assessment.render, "results": results.render,
+    "assessment": assessment.render, "results": results.render,
     "history": history.render, "about": about.render,
 }
 ROUTES[ss.page]()

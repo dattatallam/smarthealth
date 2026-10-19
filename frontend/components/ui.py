@@ -8,11 +8,16 @@ html, body, [class*="css"], .stApp { font-family: 'Inter', sans-serif; }
 .stApp { background: #F3FBFC; color: #0B1F33; color-scheme: light; }
 [data-baseweb="input"], [data-baseweb="select"] > div, [data-baseweb="base-input"], .stNumberInput input, .stTextInput input { background: #FFFFFF !important; color: #0B1F33 !important; }
 [data-baseweb="input"], [data-baseweb="select"] > div { border: 1px solid #E6EEF2 !important; border-radius: 10px !important; }
+[data-testid="stNumberInput"] [data-baseweb="input"],
+[data-testid="stSelectbox"] [data-baseweb="select"] > div { border: 1px solid #C8D8E2 !important; border-radius: 8px !important; background: #FFFFFF !important; }
+[data-testid="stNumberInput"] [data-baseweb="input"]:focus-within,
+[data-testid="stSelectbox"] [data-baseweb="select"] > div:focus-within { border-color: #0B7BC0 !important; box-shadow: 0 0 0 2px rgba(11,123,192,.12); }
 .stForm { background: #fff; border: 1px solid #E6EEF2 !important; border-radius: 16px; padding: 1.2rem; }
 label, .stMarkdown p { color: #0B1F33; }
 #MainMenu, footer, header[data-testid="stHeader"] { visibility: hidden; height: 0; }
 .block-container { padding-top: 1.6rem; max-width: 1100px; }
 [data-testid="stSidebar"] { background: #FFFFFF; border-right: 1px solid #E6EEF2; }
+[data-testid="stSidebarCollapseButton"], [data-testid="collapsedControl"] { display: none !important; }
 [data-testid="stSidebar"] .stButton > button { width: 100%; justify-content: flex-start; border: none; background: transparent;
   color: #3B4E60; font-weight: 500; border-radius: 10px; padding: .55rem .8rem; }
 [data-testid="stSidebar"] .stButton > button:hover { background: #EEF6FA; color: #0B7BC0; }

@@ -1,6 +1,4 @@
 import streamlit as st
-import matplotlib.pyplot as plt
-from backend.ml.shap_explainer import waterfall_figure
 from backend.services.alerts import send_alert, AlertError
 from frontend.components.ui import html, stat_card, bar_rows, navigate
 
@@ -45,13 +43,6 @@ def render():
     top = t.head(8)
     st.caption("Years each factor pushed your biological-age estimate up (amber) or down (green). Computed by SHAP from the loaded model and your inputs.")
     bar_rows([(l, v) for l, v in zip(top["label"], top["shap_years"])], signed=True, unit=" yrs")
-    with st.expander("SHAP waterfall plot"):
-        try:
-            fig = waterfall_figure(r["shap"])
-            st.pyplot(fig, use_container_width=True)
-            plt.close(fig)
-        except Exception as exc:
-            st.info(f"Waterfall plot unavailable: {exc}")
 
     html('<h3 style="margin-top:1rem">D · Recommendations</h3>')
     for cat, text in r["recommendations"]:
