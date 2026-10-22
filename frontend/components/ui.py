@@ -37,7 +37,8 @@ label, .stMarkdown p { color: #0B1F33; }
   border-radius: 10px; font-weight: 600; padding: .55rem 1.1rem; }
 .stButton > button[kind="secondary"], .stFormSubmitButton > button[kind="secondary"] { border-radius: 10px; border: 1px solid #E6EEF2; background: #fff; color: #0B1F33; font-weight: 600; }
 .sh-logo { display:flex; align-items:center; gap:.5rem; font-weight:700; font-size:1.05rem; }
-.sh-logo .dot { width:28px; height:28px; border-radius:8px; background:linear-gradient(135deg,#0B7BC0,#12B8A6); display:inline-flex; align-items:center; justify-content:center; color:#fff; font-size:.9rem; }
+.sh-logo .dot { width:28px; height:28px; display:inline-flex; flex:0 0 28px; align-items:center; justify-content:center; }
+.sh-logo .dot svg { display:block; width:100%; height:100%; }
 .sh-card { background:#fff; border:1px solid #E6EEF2; border-radius:16px; padding:1.1rem 1.3rem; box-shadow:0 1px 3px rgba(11,31,51,.04); margin-bottom:1rem; }
 .sh-label { font-size:.68rem; letter-spacing:.08em; text-transform:uppercase; color:#6B7C8C; font-weight:600; }
 .sh-big { font-size:2rem; font-weight:800; line-height:1.15; margin:.25rem 0; }
@@ -79,7 +80,17 @@ def navigate(page: str):
 
 def logo(white=False):
     color = "#fff" if white else "#0B1F33"
-    return f'<div class="sh-logo" style="color:{color}"><span class="dot">♥</span>Smart Health.</div>'
+    icon = '''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" aria-hidden="true">
+      <defs><linearGradient id="healthLogoGradient" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#08B8EF"/><stop offset="1" stop-color="#08CDAA"/>
+      </linearGradient></defs>
+      <rect x="12" y="12" width="488" height="488" rx="112" fill="url(#healthLogoGradient)"/>
+      <path d="M256 90c-48 28-102 49-157 60v93c0 103 63 172 157 224 94-52 157-121 157-224v-93c-55-11-109-32-157-60Z"
+        fill="none" stroke="#fff" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M166 257h57l27-69 26 136 31-87 23 20h32"
+        fill="none" stroke="#fff" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>'''
+    return f'<div class="sh-logo" style="color:{color}"><span class="dot">{icon}</span>Smart Health.</div>'
 
 
 def stat_card(label, value, sub="", color="#0B1F33"):
