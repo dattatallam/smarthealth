@@ -8,8 +8,11 @@ from frontend.components.ui import html
 from backend.services.validation import validate_inputs
 
 
-def _num(label, key, **kw):
-    return st.number_input(label, value=None, key=key, **kw)
+def _num(container, label, key, **kw):
+    # Avoid Streamlit's default two-decimal display (e.g. 67.00) when an
+    # input loses focus. It makes the field look like it refreshed while the
+    # user moves to the next value.
+    return container.number_input(label, value=None, format="%g", key=key, **kw)
 
 
 def render():
@@ -18,25 +21,25 @@ def render():
     with st.form("assessment_form", enter_to_submit=False):
         html('<div class="sh-label">Basics</div>')
         a, b = st.columns(2)
-        age = a.number_input("Age (years)", value=None, placeholder="e.g. 35", key="f_age")
+        age = a.number_input("Age (years)", value=None, format="%g", placeholder="e.g. 35", key="f_age")
         gender = b.selectbox("Gender", CHOICES["Gender"], key="f_gender")
         html('<div class="sh-label" style="margin-top:.8rem">Body measurements</div>')
         c1, c2, c3, c4 = st.columns(4)
-        wt = c1.number_input("Weight (kg)", value=None, key="f_wt")
-        ht = c2.number_input("Height (cm)", value=None, key="f_ht")
-        waist = c3.number_input("Waist (cm)", value=None, key="f_waist")
-        pulse = c4.number_input("Resting pulse (bpm)", value=None, key="f_pulse")
+        wt = _num(c1, "Weight (kg)", "f_wt")
+        ht = _num(c2, "Height (cm)", "f_ht")
+        waist = _num(c3, "Waist (cm)", "f_waist")
+        pulse = _num(c4, "Resting pulse (bpm)", "f_pulse")
         html('<div class="sh-label" style="margin-top:.8rem">Blood pressure</div>')
         d1, d2 = st.columns(2)
-        sbp = d1.number_input("Systolic BP (mmHg)", value=None, key="f_sbp")
-        dbp = d2.number_input("Diastolic BP (mmHg)", value=None, key="f_dbp")
+        sbp = _num(d1, "Systolic BP (mmHg)", "f_sbp")
+        dbp = _num(d2, "Diastolic BP (mmHg)", "f_dbp")
         html('<div class="sh-label" style="margin-top:.8rem">Blood tests</div>')
         e1, e2, e3, e4, e5 = st.columns(5)
-        chol = e1.number_input("Total cholesterol (mg/dL)", value=None, key="f_chol")
-        hgb = e2.number_input("Hemoglobin (g/dL)", value=None, key="f_hgb")
-        hct = e3.number_input("Hematocrit (%)", value=None, key="f_hct")
-        cre = e4.number_input("Creatinine (mg/dL)", value=None, key="f_cre")
-        uric = e5.number_input("Uric acid (mg/dL)", value=None, key="f_uric")
+        chol = _num(e1, "Total cholesterol (mg/dL)", "f_chol")
+        hgb = _num(e2, "Hemoglobin (g/dL)", "f_hgb")
+        hct = _num(e3, "Hematocrit (%)", "f_hct")
+        cre = _num(e4, "Creatinine (mg/dL)", "f_cre")
+        uric = _num(e5, "Uric acid (mg/dL)", "f_uric")
         html('<div class="sh-label" style="margin-top:.8rem">Lifestyle</div>')
         g1, g2, g3 = st.columns(3)
         smoke = g1.selectbox("Smoking", CHOICES["Smoking_Status"], key="f_smoke")
