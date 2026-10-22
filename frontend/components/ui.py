@@ -10,16 +10,15 @@ html, body, [class*="css"], .stApp { font-family: 'Inter', sans-serif; }
 [data-baseweb="input"], [data-baseweb="select"] > div { border: 1px solid #CBD5E1 !important; border-radius: 6px !important; }
 .stForm { background: #fff; border: 1px solid #E6EEF2 !important; border-radius: 16px; padding: 1.2rem; }
 [data-testid="stNumberInput"] [data-baseweb="input"],
-[data-testid="stNumberInput"] [data-baseweb="base-input"],
 [data-testid="stSelectbox"] [data-baseweb="select"] > div {
   box-sizing: border-box; border: 1px solid #CBD5E1 !important; border-radius: 6px !important;
   background: #FFFFFF !important;
 }
 [data-testid="stNumberInput"]:focus-within [data-baseweb="input"],
-[data-testid="stNumberInput"]:focus-within [data-baseweb="base-input"],
 [data-testid="stSelectbox"]:focus-within [data-baseweb="select"] > div {
-  border-color: #0B7BC0 !important; box-shadow: 0 0 0 2px rgba(11,123,192,.12);
+  border-color: #CBD5E1 !important; box-shadow: none !important; outline: none !important;
 }
+[data-testid="stNumberInput"] [data-baseweb="base-input"]:focus { border: none !important; box-shadow: none !important; outline: none !important; }
 label, .stMarkdown p { color: #0B1F33; }
 #MainMenu, footer, header[data-testid="stHeader"] { visibility: hidden; height: 0; }
 .block-container { padding-top: 1.6rem; max-width: 1100px; }
