@@ -7,18 +7,19 @@ CSS = """
 html, body, [class*="css"], .stApp { font-family: 'Inter', sans-serif; }
 .stApp { background: #F3FBFC; color: #0B1F33; color-scheme: light; }
 [data-baseweb="input"], [data-baseweb="select"] > div, [data-baseweb="base-input"], .stNumberInput input, .stTextInput input { background: #FFFFFF !important; color: #0B1F33 !important; }
-[data-baseweb="input"], [data-baseweb="select"] > div { border: 1px solid #CBD5E1 !important; border-radius: 6px !important; }
+[data-baseweb="input"], [data-baseweb="select"] > div { border: none !important; box-shadow: none !important; }
 .stForm { background: #fff; border: 1px solid #E6EEF2 !important; border-radius: 16px; padding: 1.2rem; }
-[data-testid="stNumberInput"] [data-baseweb="input"],
-[data-testid="stSelectbox"] [data-baseweb="select"] > div {
+.stForm [data-testid="stNumberInput"] input,
+.stForm [data-testid="stSelectbox"] [role="combobox"] {
   box-sizing: border-box; border: 1px solid #CBD5E1 !important; border-radius: 6px !important;
-  background: #FFFFFF !important;
+  background: #FFFFFF !important; box-shadow: none !important; outline: none !important;
 }
-[data-testid="stNumberInput"]:focus-within [data-baseweb="input"],
-[data-testid="stSelectbox"]:focus-within [data-baseweb="select"] > div {
+.stForm [data-testid="stNumberInput"] input:focus,
+.stForm [data-testid="stSelectbox"] [role="combobox"]:focus,
+.stForm [data-testid="stNumberInput"] [data-baseweb="input"]:focus-within,
+.stForm [data-testid="stSelectbox"] [data-baseweb="select"] > div:focus-within {
   border-color: #CBD5E1 !important; box-shadow: none !important; outline: none !important;
 }
-[data-testid="stNumberInput"] [data-baseweb="base-input"]:focus { border: none !important; box-shadow: none !important; outline: none !important; }
 label, .stMarkdown p { color: #0B1F33; }
 #MainMenu, footer, header[data-testid="stHeader"] { visibility: hidden; height: 0; }
 .block-container { padding-top: 1.6rem; max-width: 1100px; }
