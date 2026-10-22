@@ -6,7 +6,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # project root, so
 import streamlit as st
 from frontend.components.ui import inject_css, navigate, logo, html
 
-st.set_page_config(page_title="Smart Health", page_icon="🩺", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(
+    page_title="Smart Health",
+    page_icon=str(Path(__file__).resolve().parent / "assets" / "health_logo.svg"),
+    layout="wide",
+    initial_sidebar_state="expanded",
+)
 
 ss = st.session_state
 ss.setdefault("user", None)
