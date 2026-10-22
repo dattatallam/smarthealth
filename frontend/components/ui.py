@@ -20,6 +20,10 @@ html, body, [class*="css"], .stApp { font-family: 'Inter', sans-serif; }
 .stForm [data-testid="stSelectbox"] [data-baseweb="select"] > div:focus-within {
   border-color: #CBD5E1 !important; box-shadow: none !important; outline: none !important;
 }
+.stForm [data-testid="stNumberInput"]:focus-within,
+.stForm [data-testid="stNumberInput"] :focus-within:not(input) {
+  border: none !important; box-shadow: none !important; outline: none !important;
+}
 label, .stMarkdown p { color: #0B1F33; }
 #MainMenu, footer, header[data-testid="stHeader"] { visibility: hidden; height: 0; }
 .block-container { padding-top: 1.6rem; max-width: 1100px; }
